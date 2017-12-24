@@ -1,5 +1,5 @@
 {
-  "name": "tools-files",
+  "name": "tool-files",
   "version": "1.0.0",
   "description": "Module NodeJs for manipulating files.",
   "main": "index.js",

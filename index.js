@@ -7,9 +7,9 @@ var fs = require('fs');
 /**
  * cleanAssetFolder Delete Assets Folder
  */
-ToolsFile.deleteFile = function( path_file ){
+ToolsFile.deleteFile = function( pathFile ){
 
-    fs.unlink( path_file, function(err){
+    fs.unlink( pathFile, function(err){
       if(err) {
           return console.log(err);
       }
@@ -19,14 +19,14 @@ ToolsFile.deleteFile = function( path_file ){
 }
 /**
  * [ Can write a file]
- * @param  {[string]} path_file      [The file path]
- * @param  {[string]} name_file     [ name + extension of file]
+ * @param  {[string]} pathFile      [The file path]
+ * @param  {[string]} nameFile     [ name + extension of file]
  * @param  {[string]} content        [content of file]
  * @return {[Boolean]}               [True if good operation]
  */
-ToolsFile.writeFile = function( path_file, name_file, content ){
+ToolsFile.writeFile = function( pathFile, nameFile, content ){
 
-      fs.writeFile( path_file + name_file, content, function(err) {
+      fs.writeFile( pathFile + nameFile, content, function(err) {
           if(err) {
                console.log(err);
                return false
@@ -40,21 +40,21 @@ ToolsFile.writeFile = function( path_file, name_file, content ){
 }
 /**
  * Get a file
- * @param  {[string]} path_file [Path File]
+ * @param  {[string]} pathFile [Path File]
  * @return {[string]}           [Content file]
  */
-ToolsFile.getFile = function( path_file ){
-  console.log( path_file );
-  return fs.readFileSync( path_file, 'utf8')
+ToolsFile.getFile = function( pathFile ){
+  console.log( pathFile );
+  return fs.readFileSync( pathFile, 'utf8')
 }
 
 /**
  * Get a file
- * @param  {[string]} path_file [Path File]
+ * @param  {[string]} pathFile [Path File]
  * @return {[string]}           [Content file]
  */
-ToolsFile.getFileJson = function( path_file ){
-      return  JSON.parse( this.getFile( path_file ) );
+ToolsFile.getFileJson = function( pathFile ){
+      return  JSON.parse( this.getFile( pathFile ) );
 }
 
 module.exports = ToolsFile;
