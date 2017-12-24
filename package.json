@@ -1,0 +1,19 @@
+{
+  "name": "tools-files",
+  "version": "1.0.0",
+  "description": "Module NodeJs for manipulating files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SalvaCrea/tool-files.git"
+  },
+  "author": "Salvador Cardona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SalvaCrea/tool-files/issues"
+  },
+  "homepage": "https://github.com/SalvaCrea/tool-files#readme"
+}
