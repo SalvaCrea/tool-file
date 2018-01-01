@@ -1,13 +1,12 @@
-// ToolsFile.js
+// Tools Files
 // ========
 
-
-var ToolsFile = {};
+var self = module.exports;
 var fs = require('fs');
 /**
- * cleanAssetFolder Delete Assets Folder
+ *  Delete a File by path
  */
-ToolsFile.deleteFile = function( pathFile ){
+self.deleteFile = function( pathFile ){
 
     fs.unlink( pathFile, function(err){
       if(err) {
@@ -18,13 +17,13 @@ ToolsFile.deleteFile = function( pathFile ){
 
 }
 /**
- * [ Can write a file]
- * @param  {[string]} pathFile      [The file path]
- * @param  {[string]} nameFile     [ name + extension of file]
- * @param  {[string]} content        [content of file]
- * @return {[Boolean]}               [True if good operation]
+ *  Can write a file
+ * @param  {[string]} pathFile        The file path
+ * @param  {[string]} nameFile        Name + extension of file
+ * @param  {[string]} content         Content of file
+ * @return {[Boolean]}                True if good operation
  */
-ToolsFile.writeFile = function( pathFile, nameFile, content ){
+self.writeFile = function( pathFile, nameFile, content ){
 
       fs.writeFile( pathFile + nameFile, content, function(err) {
           if(err) {
@@ -32,7 +31,7 @@ ToolsFile.writeFile = function( pathFile, nameFile, content ){
                return false
           }
           else{
-              console.log("The file is writed");
+              console.log( "The file is writed" );
               return true;
           }
     });
@@ -40,12 +39,11 @@ ToolsFile.writeFile = function( pathFile, nameFile, content ){
 }
 /**
  * Get a file
- * @param  {[string]} pathFile [Path File]
- * @return {[string]}           [Content file]
+ * @param  {[string]} pathFile  Path File
+ * @return {[string]}           Content file
  */
-ToolsFile.getFile = function( pathFile ){
-  console.log( pathFile );
-  return fs.readFileSync( pathFile, 'utf8')
+self.getFile = function( pathFile ){
+    return fs.readFileSync( pathFile, 'utf8')
 }
 
 /**
@@ -53,8 +51,6 @@ ToolsFile.getFile = function( pathFile ){
  * @param  {[string]} pathFile [Path File]
  * @return {[string]}           [Content file]
  */
-ToolsFile.getFileJson = function( pathFile ){
-      return  JSON.parse( this.getFile( pathFile ) );
+self.getFileJson = function( pathFile ){
+    return  JSON.parse( this.getFile( pathFile ) );
 }
-
-module.exports = ToolsFile;
