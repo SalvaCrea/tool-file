@@ -1,8 +1,9 @@
 // Tools Files
 // ========
-
 var self = module.exports;
-var fs = require('fs');
+var fs   = require('fs');
+var fs   = require('fs');
+var http = require('https');
 /**
  *  Delete a File by path
  */
@@ -54,3 +55,24 @@ self.getFile = function( pathFile ){
 self.getFileJson = function( pathFile ){
     return  JSON.parse( this.getFile( pathFile ) );
 }
+/**
+ * Dowload and write file in the destination
+ * @param {[string]} url  The url of file
+ * @param {[string]} dest The path of destination
+ * @param {Function} cb   Function callback
+ */
+ self.dowloadFile = function(url, dest, cb) {
+     if (typeof cb != 'function') {
+         cb = function(error){console.log(error)}
+     }
+     var file = fs.createWriteStream(dest);
+     var request = http.get(url, function(response) {
+         response.pipe(file);
+         file.on('finish', function() {
+            file.close(cb);  // close() is async, call cb after close completes.
+         });
+     }).on('error', function(err) { // Handle errors
+         fs.unlink(dest); // Delete the file async. (But we don't check the result)
+         if (cb) cb(err.message);
+     });
+ };
