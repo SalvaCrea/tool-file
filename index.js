@@ -46,7 +46,6 @@ self.writeFile = function( pathFile, nameFile, content ){
 self.getFile = function( pathFile ){
     return fs.readFileSync( pathFile, 'utf8')
 }
-
 /**
  * Get a file
  * @param  {[string]} pathFile [Path File]
@@ -61,7 +60,7 @@ self.getFileJson = function( pathFile ){
  * @param {[string]} dest The path of destination
  * @param {Function} cb   Function callback
  */
- self.dowloadFile = function(url, dest, cb) {
+ self.dowloadFile = function(url, dest, cb = '') {
      if (typeof cb != 'function') {
          cb = function(error){console.log(error)}
      }
