@@ -8,14 +8,12 @@ var http = require('https');
  *  Delete a File by path
  */
 self.deleteFile = function( pathFile ){
-
     fs.unlink( pathFile, function(err){
       if(err) {
           return console.log(err);
       }
       console.log("The file deleted");
     });
-
 }
 /**
  *  Can write a file
@@ -25,8 +23,7 @@ self.deleteFile = function( pathFile ){
  * @return {[Boolean]}                True if good operation
  */
 self.writeFile = function( pathFile, nameFile, content ){
-
-      fs.writeFile( pathFile + nameFile, content, function(err) {
+    fs.writeFile( pathFile + nameFile, content, function(err) {
           if(err) {
                console.log(err);
                return false
@@ -36,7 +33,6 @@ self.writeFile = function( pathFile, nameFile, content ){
               return true;
           }
     });
-
 }
 /**
  * Get a file
